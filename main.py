@@ -68,8 +68,8 @@ def service_discovery():
                     "instance":             f"{device.get('name')}",
                     "__meta_model":         f"{device.get('model')}",
                     "__meta_location":      f"{location.get('properties').get('name')}",
-                    "__meta_latitude":      f"{location.get('geometry').get('coordinates')[0]}",
-                    "__meta_longitude":     f"{location.get('geometry').get('coordinates')[1]}",
+                    "__meta_latitude":      f"{location.get('geometry').get('coordinates')[1]}",
+                    "__meta_longitude":     f"{location.get('geometry').get('coordinates')[0]}",
                     "__meta_organization":  f"{organizations.get(device.get('organization')).get('name')}"
                 }
             })
