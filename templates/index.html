@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>openwisp-prometheus-service-discovery</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="row">
+                <h1>openwisp-prometheus-service-discovery</h1>
+                <p>This service talks to an <a href="https://openwisp.org/">OpenWISP</a> instance and returns the
+                    inventory so it can be consumed by
+                    <a href="https://prometheus.io/">prometheus</a>
+                    via <a href="https://prometheus.io/docs/prometheus/latest/http_sd/">http service discovery</a>.
+                </p>
+                <p>
+                    For more information take a look at the <a
+                        href="https://github.com/ONKF/openwisp-prometheus-service-discovery">project page</a>.
+                </p>
+
+            </div>
+            <div class="row">
+                <h2>prometheus integration</h2>
+                <p>add this snippet to your prometheus.yml</p>
+
+                <pre><code>
+        http_sd_config:
+            url: 'http://{service-ip}/service-discovery?url={openwisp-url}&token={api-token}'
+            refresh_interval: 600
+                </code></pre>
+
+                <p>Extend with <code>relabel_configs</code> and everything else you need. (remember to encode the
+                    <code>url</code>)</p>
+            </div>
+
+            <div class="row">
+                <h2>query openwisp</h2>
+
+                <p>directly execute a query from your browser</p>
+            </div>
+
+            <div class="row">
+                <form action="/service-discovery">
+                    <div class="col col-md-12">
+                        <label for="url" class="float-start">URL</label>
+                        <input type="text" id="url" name="url" class="form-control">
+                    </div>
+                    <div class="col col-md-12 mb-2">
+                        <label for="token" class="float-start">API Token</label>
+                        <input type="text" id="token" name="token" class="form-control">
+                    </div>
+                    <input type="submit" value="query" class="btn btn-primary float-end">
+
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
