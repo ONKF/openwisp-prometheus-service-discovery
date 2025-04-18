@@ -1,0 +1,5 @@
+services:
+  openwisp-prometheus-service-discovery:
+    image: ghcr.io/onkf/openwisp-prometheus-service-discovery:latest
+    ports:
+      - "8080:80"
